@@ -1,0 +1,46 @@
+in ruby
+
+def something
+  puts 'hello world'
+end
+
+something
+
+in javascript
+
+var something = function() {
+  console.log('hello world')
+}
+
+something()
+
+-------------
+
+def something(name)
+  puts "hello world #{name}"
+end
+
+something('limei')
+
+in javascript
+
+var something = function(name) {
+  console.log(`hello world ${name})
+}
+
+something('limei')
+
+
+---- creating a new class in ruby
+
+class Something
+  def initialize(attrs = {})
+    @weight = attrs[:weight]
+  end
+end
+
+---- same in javascript
+
+function Something(attrs) {
+  this.weight = attrs.weight
+}
