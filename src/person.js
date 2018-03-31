@@ -12,7 +12,16 @@ if (1 === 1) {
   var one = 1; // Here we need a semi-colon because it's a sattement.
 } // Here we do not need semi-colon either, because it's a control flow
 
-Person.prototype.calculate_bmi = function() {
+Person.prototype.calculate_bmi = function(units) {
+
   calculator = new BMICalculator();
-  calculator.metric_bmi(this);
+  if (units === "metric"){
+    calculator.metric_bmi(this);
+  }
+  else {
+    calculator.imperial_bmi(this);
+
+  }
+
+
 };

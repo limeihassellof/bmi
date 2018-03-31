@@ -62,3 +62,5 @@ function Something(attrs) {
    person.calculate_bmi();
 
 Now you can play around with some values to see if everything is working properly. The next step will be to write some acceptance tests using Jasmine. In order to do that properly, we will introduce a web framework that we will be working with later during this course - Sinatra.
+
+5. Why do we need the beforeEach block? What are the last three lines of that block doing?
