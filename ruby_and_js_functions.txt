@@ -44,3 +44,21 @@ end
 function Something(attrs) {
   this.weight = attrs.weight
 }
+
+1. What is the $(document).ready... function?
+    wait running the code until entire page has finished loading
+
+2. Why are we using parseFloat($('#weight').val());?
+    Integer = "full" numbers 1 2 3 4 5454
+    Float = "broken" numbers 1.3 244.3565
+
+    the value of text input is always a string, i can not do math on the string, by calling parseFloat with the string as a argument it return a float, that we can count with.
+
+3. What would happen if we did not include <script src="src/person.js"></script> in the index.html source?
+  person is not defind, it was not required in to the page
+
+ 4. What line in index.html calls the method that calculates the BMI? What is happening on this line, in terms of the rest of the program?
+   var person = new Person({weight: w, height: h});
+   person.calculate_bmi();
+
+Now you can play around with some values to see if everything is working properly. The next step will be to write some acceptance tests using Jasmine. In order to do that properly, we will introduce a web framework that we will be working with later during this course - Sinatra.
