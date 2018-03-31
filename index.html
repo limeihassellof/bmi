@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- This is required for the page to work with non-english characters like swedish åäö and chinese -->
     <meta charset="utf-8">
+    <!-- This is required for Bootstrap to work with different sizes of screens like iphone ipad computer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>BMI calculator</title>
     <script src="src/person.js"></script>
     <script src="src/bmi_calculator.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <script type="text/javascript">
       $(document).ready(function () {
         $('#calculate').click(function () {
@@ -15,27 +22,56 @@
           person.calculate_bmi($('#units').val());
           $('#display_value').html('Your BMI is ' + person.bmiValue);
           $('#display_message').html('and you are '+ person.bmiMessage);
+          $('#bmi_alert').removeClass('alert-primary');
+          $('#bmi_alert').removeClass('alert-success');
+          $('#bmi_alert').removeClass('alert-warning');
+          $('#bmi_alert').removeClass('alert-danger');
+          
+          if (person.bmiMessage === 'Underweight') {
+            $('#bmi_alert').addClass('alert-primary');
+          } else if (person.bmiMessage === 'Normal') {
+            $('#bmi_alert').addClass('alert-success');
+          } else if (person.bmiMessage === 'Overweight') {
+             $('#bmi_alert').addClass('alert-warning');
+           } else if (person.bmiMessage === 'Obese') {
+             $('#bmi_alert').addClass('alert-danger');
+           }
         });
       });
     </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   </head>
   <body>
-    <form>
-      <input type="text" id="weight" placeholder="Weight">
-      <input type="text" id="height" placeholder="Height">
-      <input type="button" id="calculate" value="Calculate">
-      <select id="units">
+    <div class="container">
+      <div class="row">
+        <div class="col align-self-start">
 
-        <option value="metric">Metric</option>
-        <option value="imperial">Imperial</option>
+        </div>
+        <div class="col align-self-center">
+          <form>
+            <input type="text" id="weight" placeholder="Weight">
+            <input type="text" id="height" placeholder="Height">
+            <input type="button" id="calculate" value="Calculate">
+            <select id="units">
 
-      </select>
-    </form>
-    <div>
-      <span id="display_value"></span>
-      <span id="display_message"></span>
+              <option value="metric">Metric</option>
+              <option value="imperial">Imperial</option>
 
+            </select>
+          </form>
+          <div class="alert" id="bmi_alert">
+            <span id="display_value"></span>
+            <span id="display_message"></span>
+          </div>
+        </div>
+        <div class="col align-self-end">
+
+        </div>
+      </div>
     </div>
+
+
 
   </body>
 </html>
